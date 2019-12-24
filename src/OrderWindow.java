@@ -12,9 +12,9 @@ public class OrderWindow {
 
                 //Intent intent = new Intent(this, ComboMeal.class);
                 JPanel a2 = new ComboMeal(frame);
-                frame.setVisible(false);
-                frame.add(a2);
-                //frame.setVisible(true);
+                //frame.setVisible(false);
+                frame.setContentPane(a2);
+                frame.setVisible(true);
 
             }
         });

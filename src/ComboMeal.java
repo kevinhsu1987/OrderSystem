@@ -5,8 +5,6 @@ public class ComboMeal extends javax.swing.JPanel {
     JFrame frame = null;
     public ComboMeal(JFrame frame){
         this.frame=frame;
-        //setVisible(true);
-
     }
 
     public ComboMeal() {

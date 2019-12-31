@@ -7,10 +7,10 @@ import java.util.Properties;
 
 public class SimpleDBSource implements DBSource {
     private Properties props;
-    private String url = "jdbc:mysql://35.236.156.108/order01?";
+    private String url = "jdbc:mysql://35.236.156.108:3306/order01";
     private String user = "s92006351012@gmail.com";
     private String passwd = "Kev!n1987";
-
+    //auth fail
     public SimpleDBSource() throws IOException,
             ClassNotFoundException {
         //this("jdbc.properties");
@@ -21,12 +21,12 @@ public class SimpleDBSource implements DBSource {
         props = new Properties();
         props.load(new FileInputStream(configFile));
 
-        url = props.getProperty("onlyfun.caterpillar.url");
-        user = props.getProperty("onlyfun.caterpillar.user");
-        passwd = props.getProperty("onlyfun.caterpillar.password");
+        url = props.getProperty("url");
+        user = props.getProperty("name");
+        passwd = props.getProperty("password");
 
         Class.forName(
-                props.getProperty("onlyfun.caterpillar.driver"));
+                props.getProperty("driverClass"));
     }
 
     public Connection getConnection() throws SQLException {

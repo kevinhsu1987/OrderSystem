@@ -112,8 +112,9 @@ public class JDBCmysql {
     }
     //查詢資料
     //可以看看回傳結果集及取得資料方式
-    public void SelectTable()
+    public String SelectTable()
     {
+        String data = "";
         try
         {
             stat = con.createStatement();
@@ -121,8 +122,9 @@ public class JDBCmysql {
             System.out.println("type\t\tname\t\tcost");
             while(rs.next())
             {
-                System.out.println(rs.getString("type")+"\t"+
-                        rs.getString("name")+"\t"+rs.getString("cost"));
+                System.out.println(rs.getString("type")+"\t\t"+
+                        rs.getString("name")+"\t\t"+rs.getString("cost"));
+                data += (rs.getString("type")+","+rs.getString("name")+","+rs.getString("cost")+"/");
             }
         }
         catch(SQLException e)
@@ -133,6 +135,7 @@ public class JDBCmysql {
         {
             Close();
         }
+        return data;
     }
     //完整使用完資料庫後,記得要關閉所有Object
     //否則在等待Timeout時,可能會有Connection poor的狀況
@@ -171,7 +174,7 @@ public class JDBCmysql {
 	    test.createTable();
 	    test.insertTable("yku", "12356");
 	    test.insertTable("yku2", "7890"); */
-        test.SelectTable();
-
+        String data = test.SelectTable();
+        System.out.println(data);
     }
 }

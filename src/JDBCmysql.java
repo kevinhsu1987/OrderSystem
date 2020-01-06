@@ -50,7 +50,6 @@ public class JDBCmysql {
         }
 
     }
-
     //建立table的方式
     //可以看看Statement的使用方式
     public void createTable() {
@@ -63,7 +62,6 @@ public class JDBCmysql {
             Close();
         }
     }
-
     //新增資料
     //可以看看PrepareStatement的使用方式
     public void insertTable(String name, String passwd) {
@@ -79,7 +77,6 @@ public class JDBCmysql {
             Close();
         }
     }
-
     //刪除Table,
     //跟建立table很像
     public void dropTable() {
@@ -92,7 +89,6 @@ public class JDBCmysql {
             Close();
         }
     }
-
     //查詢資料
     //可以看看回傳結果集及取得資料方式
     public void SelectTable() {
@@ -110,7 +106,6 @@ public class JDBCmysql {
             Close();
         }
     }
-
     //完整使用完資料庫後,記得要關閉所有Object
     //否則在等待Timeout時,可能會有Connection poor的狀況
     protected void Close() {

@@ -17,6 +17,9 @@ public class ComboMeal extends JPanel {
 }
 
     private void init() {
+        JDBCmysql menu = new JDBCmysql();
+        menu.SelectTable();
+
         /*setLayout(new FlowLayout()); // 設定佈局
 
        JLabel n1 = new JLabel("起司豬排潛艇堡");

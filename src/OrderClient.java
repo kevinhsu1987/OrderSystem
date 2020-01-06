@@ -1,21 +1,37 @@
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
+import java.sql.*;
 
 public class OrderClient {
-    private String username;
-    private String password;
-    OrderClient() {
-        ;
-    }
-    boolean login(String username, String password) {
-        //TODO:Encrypt
-        String serverUsername;
-        String serverPassword;
-        serverUsername = "user"; serverPassword = "pwd";
-        return username.equals(serverUsername) && password.equals(serverPassword);
+
+    public static void main(String[] args) {
+        class mysql extends JDBCmysql {
+            private Connection con = null; //Database objects
+            //連接object
+            private Statement stat = null;
+            //執行,傳入之sql為完整字串
+            private ResultSet rs = null;
+            //結果集
+            private PreparedStatement pst = null;
+
+            ResultSet SelectTable(String comment) {
+                try {
+                    con.createStatement();
+                    rs = stat.executeQuery(comment);
+                    System.out.println("type\t\tname\t\tcost");
+                    while (rs.next()) {
+                        System.out.println(rs.getString("type") + "\t" +
+                                rs.getString("name") + "\t" + rs.getString("cost"));
+                    }
+                } catch (SQLException e) {
+                    System.out.println("DropDB Exception :" + e.toString());
+                } finally {
+                    Close();
+            }
+                return rs;
+            }
+        }
+        JDBCmysql sql = new JDBCmysql();
+        sql.SelectTable();
+
+        OrderWindow window = new OrderWindow();
     }
 }
